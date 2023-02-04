@@ -4,7 +4,7 @@
 
 - You may use `EasyAsyncNetworkClient` if prefer `async/await` approach
 
-- You may use `EasyCombineNetworkClient` if prefer `Combane` approach
+- You may use `EasyCombineNetworkClient` if prefer `Combine` approach
 
 - `EasyNetworkClient` already has default implementation by extension
 
