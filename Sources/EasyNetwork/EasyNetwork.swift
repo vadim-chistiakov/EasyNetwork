@@ -26,7 +26,7 @@ public protocol EasyCombineNetworkClient {
 
 //MARK: - Async/await way
 
-extension EasyNetworkClient {
+public extension EasyNetworkClient {
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,
         responseModelType: T.Type
@@ -77,7 +77,7 @@ extension EasyNetworkClient {
 
 //MARK: - Combine way
 
-extension EasyNetworkClient {
+public extension EasyNetworkClient {
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,
         responseModelType: T.Type
