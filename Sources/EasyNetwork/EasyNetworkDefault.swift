@@ -54,7 +54,10 @@ final class EasyNetworkDefault: EasyNetworkClient {
             
             switch httpResponse.statusCode {
             case 200...299:
-                guard let decodedResponse = try? JSONDecoder().decode(
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                
+                guard let decodedResponse = try? decoder.decode(
                     responseModelType,
                     from: data
                 ) else {
