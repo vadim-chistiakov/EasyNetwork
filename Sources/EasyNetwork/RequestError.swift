@@ -13,7 +13,7 @@ public enum RequestError: Error {
     case unexpectedStatusCode
     case unknown
     
-    var customMessage: String {
+    public var customMessage: String {
         switch self {
         case .decode:
             return "Decode error"
