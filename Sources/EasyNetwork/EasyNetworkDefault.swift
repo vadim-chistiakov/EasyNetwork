@@ -20,6 +20,7 @@ final class EasyNetworkDefault: EasyNetworkClient {
         
         let request = Request(
             urlComponents: urlComponents,
+            headers: endpoint.header,
             reqBody: endpoint.body,
             httpMethod: endpoint.method
         )
@@ -36,12 +37,20 @@ final class EasyNetworkDefault: EasyNetworkClient {
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw RequestError.noResponse
             }
-            
+
+            print("ResponseStatusCode: \(httpResponse.statusCode)")
+
             guard 200..<300 ~= httpResponse.statusCode else {
                 throw RequestError(fromHttpStatusCode: httpResponse.statusCode)
             }
             
-            print("ResponseStatusCode: \(httpResponse.statusCode)")
+            let json = try? JSONSerialization.jsonObject(
+                with: data,
+                options: []
+            ) as? [String: Any]
+            print("data \(data)")
+            print("json output \(json ?? [:])")
+
             
             switch httpResponse.statusCode {
             case 200...299:
