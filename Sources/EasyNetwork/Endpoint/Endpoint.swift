@@ -11,12 +11,13 @@ public typealias Header = [String: String]
 public typealias Body = [String: String]
 
 public protocol Endpoint {
+    var method: RequestMethod { get }
+    var header: Header? { get }
     var scheme: Scheme { get }
     var host: String { get }
     var path: String { get }
-    var method: RequestMethod { get }
-    var header: Header? { get }
     var body: Body? { get }
+    var params: [URLQueryItem]? { get }
 }
 
 public extension Endpoint {
